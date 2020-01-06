@@ -10,7 +10,7 @@ using std::string;
 
 int main(int argc, char**argv) {
   string meshname(argv[1]);
-  cout << "opening " << meshname << "..." << endl;
+  cout << "Abrindo " << meshname << "..." << endl;
     
   MeshType m, m2;
   int err = vcg::tri::io::ImporterOFF<MeshType>::Open(m, meshname.c_str()); //, mask );
@@ -22,7 +22,7 @@ int main(int argc, char**argv) {
   cout << "Malha carregada. " << endl;
   cout << "  Nº faces=" << m.FN() << endl;
   cout << "  Nº vertices=" << m.VN() << endl;
-  cout << "  Nº MemUsed=" << m.MemUsed() << endl; //unidade do sizeof
+  cout << "  Nº MemUsed=" << m.MemUsed() << " bytes" << endl; //unidade do sizeof
  
   vcg::tri::UpdateTopology<MeshType>::FaceFace(m); //atualizar ponteiros para faces vizinhas e numeração das arestas
   
@@ -50,7 +50,7 @@ int main(int argc, char**argv) {
   int nIter=10; //number of iterations
   vector<vcg::Histogram<ScalarType>> histFaces,histVerts; //histograms of faces quality and vertex valence
   int qualityComp = 0; //qualidade das faces para comparação. distância para 90º. A qualidade dos vértices é a valência.
-  vector<long int> tempos; //duração de cada função de emparelhamento
+  vector<long int> tempos; //duração de cada função de agrupamento
   vector<int> clusters; //
   vector<int> facesFinal;
   vector<int> vertsFinal;
@@ -58,16 +58,16 @@ int main(int argc, char**argv) {
   
   int nAlg=10; //nº de algoritmos
   string nomes[nAlg]={
-                  "Algoritmo 0", //"No clusters" //7
-                  "Algoritmo 1", //"Maior Qualidade Angular", //0
-                  "Algoritmo 2", //"Maior aresta (Luis Velho)", //1
-                  "Algoritmo 3", //"Maior Qualidade Orto Planar", //2
-                  "Algoritmo 4", //"Menor Tri Aspect Ratio Maior Aresta", //3
-                  "Algoritmo 5", //"Menor Tri Aspect Ratio Maior Aresta com TestConvex", //4
-                  "Algoritmo 6", //"Linear Level 0", //5
-                  "Algoritmo 7", //"Linear Level 2", //6
-                  "Algoritmo 8", //"Linear Level 1", //
-                  "Algoritmo 9", //"Linear Level 3", //
+                  "Algoritmo 0", //"No clusters" 
+                  "Algoritmo 1", //"Maior Qualidade Angular", 
+                  "Algoritmo 2", //"Maior aresta (Luis Velho)", 
+                  "Algoritmo 3", //"Maior Qualidade Orto Planar", 
+                  "Algoritmo 4", //"Menor Tri Aspect Ratio Maior Aresta", 
+                  "Algoritmo 5", //"Menor Tri Aspect Ratio Maior Aresta com TestConvex", 
+                  "Algoritmo 6", //"Linear Level 0", 
+                  "Algoritmo 7", //"Linear Level 1", 
+                  "Algoritmo 8", //"Linear Level 2", 
+                  "Algoritmo 9", //"Linear Level 3", 
                   };
   
   assert(vcg::tri::BitQuad<MeshType>::CountFauxs(m)==0);
@@ -81,7 +81,7 @@ int main(int argc, char**argv) {
       vcg::tri::Append<MeshType, MeshType>::MeshCopy(m, m2, false, true); //restaura malha inicial
       assert(vcg::tri::BitQuad<MeshType>::CountFauxs(m)==0); //apagar
       start = std::chrono::high_resolution_clock::now();
-        nclusters = ApplyPairing(m, metodo); //aplica metodos de emparelhamento
+        nclusters = ApplyPairing(m, metodo); //aplica metodos de agrupamento
       stop = std::chrono::high_resolution_clock::now();
       tempos.push_back(std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count()); //salva duração
       
@@ -94,7 +94,7 @@ int main(int argc, char**argv) {
       }
     }
     
-    SaveMesh(m, nomes[metodo] + " - emparelhamentos"); //salva malha após criação de clusters
+    SaveMesh(m, nomes[metodo] + " - agrupamentos"); //salva malha após criação de clusters
     GenerateHistogramsData(m,nomes[metodo], qualityComp, histFaces, histVerts); //aplica refinamento e salva qualidades em arquivos
     facesFinal.push_back(m.FN()); //salva número de faces na malha final
     vertsFinal.push_back(m.VN()); //salva número de vértices na malha final
@@ -128,7 +128,7 @@ int main(int argc, char**argv) {
       cout<<"  Emparelhamentos realizados="<<clusters[p]<<endl;
       cout<<"  Vértices finais="<<vertsFinal[i]<<endl; //
       cout<<"  Quadriláteros finais="<<facesFinal[i]/2<<endl; //assert(facesFinal[i]/2 == res[p]*4+(m2.FN()-res[p]*2)*3);//
-      cout<<"  Mediana dos tempos de execução do emparelhamento(micros)="<< (tempos[p]+tempos[p-1])/2<<endl;
+      cout<<"  Mediana dos tempos de execução do agrupamento(micros)="<< (tempos[p]+tempos[p-1])/2<<endl;
       cout<<"  Média das qualidades das faces="<<histFaces[i].Avg()<<endl;
       cout<<"  Desvio padrão das qualidades das faces=" << histFaces[i].StandardDeviation()<<endl;
       cout<<"  Qualidade da Pior face="<<histFaces[i].MinElem() << endl;
@@ -138,11 +138,11 @@ int main(int argc, char**argv) {
       //if (histVerts[i].BinCountInd(10) > 0) cout<< "*bin10*="<<histVerts[i].BinCountInd(10)<<endl;
     }
   }else{
-    int p=0;
-    for (int i = 0; i < nAlg; i++) {
-      p=nIter/2+i*nIter;
-      cout<<nomes[i]<< ": clusters="<<clusters[p]<<"  Mediana (micros)="<< tempos[p]<<endl;
-    }
+//    int p=0;
+//    for (int i = 0; i < nAlg; i++) {
+//      p=nIter/2+i*nIter;
+//      cout<<nomes[i]<< ": clusters="<<clusters[p]<<"  Mediana (micros)="<< tempos[p]<<endl;
+//    }
   }
   cout<<endl;
   
@@ -158,12 +158,12 @@ int main(int argc, char**argv) {
   //desvio padrão
   //.Percentile(0.5)
   
-  vcg::tri::Append<MeshType, MeshType>::MeshCopy(m, m2, false, true);
-  vcg::tri::UpdateQuality<MeshType>::VertexValence(m);
-  vcg::Histogram<ScalarType> Hv;
-  ComputePerVertexQualityHistogram2(m,Hv);
-  Hv.FileWrite("histograma vertex tri only");
-  if (Hv.BinCountInd(10) > 0) cout<< "\n\n*bin10 tri only*="<<Hv.BinCountInd(10)<<endl;
+//  vcg::tri::Append<MeshType, MeshType>::MeshCopy(m, m2, false, true);
+//  vcg::tri::UpdateQuality<MeshType>::VertexValence(m);
+//  vcg::Histogram<ScalarType> Hv;
+//  ComputePerVertexQualityHistogram2(m,Hv);
+//  Hv.FileWrite("histograma vertex tri only");
+//  if (Hv.BinCountInd(10) > 0) cout<< "\n\n*bin10 tri only*="<<Hv.BinCountInd(10)<<endl;
 
   return 0;
 }
