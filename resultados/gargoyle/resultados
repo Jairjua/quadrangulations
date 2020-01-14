@@ -1,0 +1,110 @@
+Abrindo gargoyle.off...
+Malha carregada. 
+  Nº faces=194256
+  Nº vertices=97130
+  Nº MemUsed=14375608 bytes
+**Executando Algoritmo 0...
+**Executando Algoritmo 1...
+**Executando Algoritmo 2...
+**Executando Algoritmo 3...
+**Executando Algoritmo 4...
+**Executando Algoritmo 5...
+**Executando Algoritmo 6...
+**Executando Algoritmo 7...
+**Executando Algoritmo 8...
+**Executando Algoritmo 9...
+
+Qtd de iterações=100
+
+Resultados: 
+Algoritmo 0
+  Emparelhamentos realizados=0
+  Vértices finais=582770
+  Quadriláteros finais=582768
+  Mediana dos tempos de execução do agrupamento(micros)=0
+  Média das qualidades das faces=0.595628
+  Desvio padrão das qualidades das faces=0.0973403
+  Qualidade da Pior face=9.68128e-05
+  Quantidade de vértices regulares=291644(0.500444)
+Algoritmo 1
+  Emparelhamentos realizados=85291
+  Vértices finais=412188
+  Quadriláteros finais=412186
+  Mediana dos tempos de execução do agrupamento(micros)=920305
+  Média das qualidades das faces=0.707533
+  Desvio padrão das qualidades das faces=0.153521
+  Qualidade da Pior face=7.10487e-05
+  Quantidade de vértices regulares=353459(0.857519)
+Algoritmo 2
+  Emparelhamentos realizados=86285
+  Vértices finais=410200
+  Quadriláteros finais=410198
+  Mediana dos tempos de execução do agrupamento(micros)=793346
+  Média das qualidades das faces=0.702138
+  Desvio padrão das qualidades das faces=0.154967
+  Qualidade da Pior face=7.10487e-05
+  Quantidade de vértices regulares=353428(0.861599)
+Algoritmo 3
+  Emparelhamentos realizados=85336
+  Vértices finais=412098
+  Quadriláteros finais=412096
+  Mediana dos tempos de execução do agrupamento(micros)=1110509
+  Média das qualidades das faces=0.705786
+  Desvio padrão das qualidades das faces=0.153912
+  Qualidade da Pior face=7.10487e-05
+  Quantidade de vértices regulares=353775(0.858473)
+Algoritmo 4
+  Emparelhamentos realizados=86517
+  Vértices finais=409736
+  Quadriláteros finais=409734
+  Mediana dos tempos de execução do agrupamento(micros)=440369
+  Média das qualidades das faces=0.684363
+  Desvio padrão das qualidades das faces=0.169792
+  Qualidade da Pior face=0.000194401
+  Quantidade de vértices regulares=352810(0.861067)
+Algoritmo 5
+  Emparelhamentos realizados=86510
+  Vértices finais=409750
+  Quadriláteros finais=409748
+  Mediana dos tempos de execução do agrupamento(micros)=494707
+  Média das qualidades das faces=0.684373
+  Desvio padrão das qualidades das faces=0.169809
+  Qualidade da Pior face=0.000194401
+  Quantidade de vértices regulares=352824(0.861071)
+Algoritmo 6
+  Emparelhamentos realizados=88183
+  Vértices finais=406404
+  Quadriláteros finais=406402
+  Mediana dos tempos de execução do agrupamento(micros)=103755
+  Média das qualidades das faces=0.662278
+  Desvio padrão das qualidades das faces=0.178988
+  Qualidade da Pior face=7.10487e-05
+  Quantidade de vértices regulares=348539(0.857617)
+Algoritmo 7
+  Emparelhamentos realizados=85272
+  Vértices finais=412226
+  Quadriláteros finais=412224
+  Mediana dos tempos de execução do agrupamento(micros)=381309
+  Média das qualidades das faces=0.706979
+  Desvio padrão das qualidades das faces=0.154353
+  Qualidade da Pior face=7.10487e-05
+  Quantidade de vértices regulares=353387(0.857265)
+Algoritmo 8
+  Emparelhamentos realizados=85290
+  Vértices finais=412190
+  Quadriláteros finais=412188
+  Mediana dos tempos de execução do agrupamento(micros)=643476
+  Média das qualidades das faces=0.707536
+  Desvio padrão das qualidades das faces=0.153518
+  Qualidade da Pior face=7.10487e-05
+  Quantidade de vértices regulares=353457(0.85751)
+Algoritmo 9
+  Emparelhamentos realizados=85285
+  Vértices finais=412200
+  Quadriláteros finais=412198
+  Mediana dos tempos de execução do agrupamento(micros)=286510
+  Média das qualidades das faces=0.706751
+  Desvio padrão das qualidades das faces=0.154681
+  Qualidade da Pior face=7.10487e-05
+  Quantidade de vértices regulares=353350(0.857229)
+
