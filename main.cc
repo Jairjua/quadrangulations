@@ -125,7 +125,7 @@ int main(int argc, char**argv) {
       cout<<nomes[i]<< endl;
       //cout<<"  Faces triangulares iniciais="<< m2.FN()<<endl;
       //cout<<"  Vértices iniciais="<< m2.VN()<<endl;
-      cout<<"  Emparelhamentos realizados="<<clusters[p]<<endl;
+      cout<<"  Agrupamentos realizados="<<clusters[p]<<endl;
       cout<<"  Vértices finais="<<vertsFinal[i]<<endl; //
       cout<<"  Quadriláteros finais="<<facesFinal[i]/2<<endl; //assert(facesFinal[i]/2 == res[p]*4+(m2.FN()-res[p]*2)*3);//
       cout<<"  Mediana dos tempos de execução do agrupamento(micros)="<< (tempos[p]+tempos[p-1])/2<<endl;
